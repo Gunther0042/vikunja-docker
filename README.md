@@ -9,22 +9,19 @@ I'm a relative novice when it comes to Docker and web hosting, so feedback is we
 ### Setup Instructions
 The following assumes you have a linux machine with a sudo user to host your Vikunja instance on, and docker, docker-compose, and git installed.
 
-Navigate to where you want the project directory to live (`cd ~` is a good default choice if you are unsure). Then make a directory for the project. `vikunja-docker` is just an example, you can name it whatever you like.
+Navigate to where you want the project directory to live (`cd ~` is a good default choice if you are unsure).
+Then clone this Github repo to that location and enter the directory.
 ```bash
-mkdir vikunja-docker
-```
-Then clone this Github repo to the folder you created.
-```bash
+git clone https://github.com/Gunther0042/vikunja-docker.git
 cd vikunja-docker
-git clone https://github.com/Gunther0042/vikunja-docker-template.git
 ```
-Then copy the `.env-template` file to `.env`. This will allow you to change the environment variables without worrying about overwriting them when recloning the repo.
+Next, copy the `.env-template` file to `.env`. This will allow you to change the environment variables without worrying about overwriting them when recloning the repo.
 ```bash
 cp .env-template .env
 ```
 At this point, feel free to use a text editor like nano to edit the environment variables in `.env`. The container should run fine with the defaults, but I would recommend at least changing the MYSQL root and user passwords. You may also want to change the external port if you do not want to host your Vikunja instance on port 80.
 
-Next, you're ready to spin up your docker container. To do so, use the following commands.
+You're now ready to spin up your docker container. To do so, use the following commands.
 ```bash
 sudo docker-compose pull && sudo docker-compose up -d
 ```
