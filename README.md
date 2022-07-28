@@ -1,13 +1,15 @@
+# Vikunja Docker-Compose Template
+
 ### Motivation
-Vikunja is a really great open-source, self-hosted to-do application. However, I found its setup documentation to be a bit confusing and based on some posts on Reddit and the project's forums, I don't think I'm the only one. I decided to create a Github repo with a Vikunja docker setup that can be implemented with a few commands. I've endeavored to make this guide as idiot-proof as possible :smiley:
+Vikunja is a really great open-source, self-hostable to-do application. However, I found its setup documentation to be a bit confusing and based on some posts on Reddit and the project's forums, I don't think I'm the only one. I decided to create a Github repo with a Vikunja docker setup that can be implemented with a few commands. I've endeavored to make this guide as idiot-proof as possible :smiley:
 
 ### Disclaimers
-This repo is meant to be a supplement to the [Vikunja docs](https://vikunja.io/docs/), not a replacement for them. The `docker-compose.yml` and `nginx.config` files used here are nearly identical to the ones found in the [Docker Walkthrough] in the docs.
+This repo is meant to be a supplement to the [Vikunja docs](https://vikunja.io/docs/), not a replacement for them. The `docker-compose.yml` and `nginx.conf` files used here are identical to the ones found in the [Docker Walkthrough](https://vikunja.io/docs/docker-walkthrough/) in the docs, with the exception of some additional environment variables in the `docker-compose.yml` file I thought might be useful.
 
 I'm a relative novice when it comes to Docker and web hosting, so feedback is welcome. Issues with Vikunja itself should be directed to the [Vikunja repos](https://kolaente.dev/vikunja). I have my Vikunja instance set up behind an nginx reverse proxy and the configuration here worked for me, but it is possible it will not be compatible with your setup.
 
 ### Setup Instructions
-The following assumes you have a linux machine with a sudo user to host your Vikunja instance on, and docker, docker-compose, and git installed.
+The following assumes you have a linux machine with a sudo user to host your Vikunja instance on, and docker, docker-compose, and git already installed.
 
 Navigate to where you want the project directory to live (`cd ~` is a good default choice if you are unsure).
 Then clone this Github repo to that location and enter the directory.
@@ -15,7 +17,7 @@ Then clone this Github repo to that location and enter the directory.
 git clone https://github.com/Gunther0042/vikunja-docker.git
 cd vikunja-docker
 ```
-Next, copy the `.env-template` file to `.env`. This will allow you to change the environment variables without worrying about overwriting them when recloning the repo.
+Next, copy the `.env-template` file to `.env`. This will allow you to change the environment variables without worrying about overwriting them if you ever reclone the repo.
 ```bash
 cp .env-template .env
 ```
@@ -40,7 +42,7 @@ You can make using the CLI easier to use by making an alias for the command. To 
 ```bash
 alias vikunja='sudo docker-compose exec api /app/vikunja/vikunja'
 ```
-If you need to access the API logs, use the following command.
+If you need to access Vikunja's logs, use the following command.
 ```bash
 sudo docker-compose logs -f
 ```
